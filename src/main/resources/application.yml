@@ -1,0 +1,15 @@
+mybatis:
+  mapper-locations: classpath*:/mybatis/*Mapper.xml
+
+
+spring:
+  datasource:
+    username: postgres
+    url: jdbc:postgresql://localhost:5433/student
+    password: moe@lau123
+
+
+
+  server:
+    error:
+      include-message: always
