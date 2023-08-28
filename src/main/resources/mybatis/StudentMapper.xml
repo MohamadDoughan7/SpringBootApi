@@ -11,32 +11,56 @@
   </resultMap>
 
   <select id="getAllStudents" resultMap="studentResultMap">
-    SELECT * FROM students
+    SELECT *
+    FROM students
   </select>
 
   <select id="findById" resultMap="studentResultMap" parameterType="java.lang.Long">
-    SELECT * FROM students WHERE id = #{id}
+    SELECT *
+    FROM students
+    WHERE id = #{id}
   </select>
 
   <select id="findStudentByEmail" resultMap="studentResultMap" parameterType="java.lang.String">
-    SELECT * FROM students WHERE email = #{email}
+    SELECT *
+    FROM students
+    WHERE email = #{email}
   </select>
 
   <insert id="insertStudent" parameterType="com.example.demo.student.Student" useGeneratedKeys="true" keyProperty="id">
-    <!-- Specify the columns and values for insertion, excluding the 'id' column -->
-    INSERT INTO students (name, dob, email) VALUES (#{name}, #{dob}, #{email})
+    INSERT INTO students
+    (
+    name,
+    dob,
+    email
+    )
+    VALUES
+    (
+    #{name},
+    #{dob},
+    #{email}
+    )
   </insert>
 
   <update id="updateStudent" parameterType="com.example.demo.student.Student">
-    UPDATE students SET name = #{name}, dob = #{dob}, email = #{email} WHERE id = #{id}
+    UPDATE students
+    SET
+    name = #{name},
+    dob = #{dob},
+    email = #{email}
+    WHERE id = #{id}
   </update>
 
   <delete id="deleteStudentById" parameterType="java.lang.Long">
-    DELETE FROM students WHERE id = #{id}
+    DELETE
+    FROM students
+    WHERE id = #{id}
   </delete>
 
   <select id="existsById" resultType="boolean" parameterType="java.lang.Long">
-    SELECT EXISTS (SELECT 1 FROM students WHERE id = #{id})
+    SELECT EXISTS
+    (SELECT 1 FROM students
+    WHERE id = #{id})
   </select>
 
 </mapper>

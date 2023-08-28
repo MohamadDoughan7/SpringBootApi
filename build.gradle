@@ -25,6 +25,7 @@ dependencies {
 	testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '3.1.0'
 	runtimeOnly group: 'org.postgresql', name: 'postgresql', version: '42.5.4'
 	implementation 'jakarta.validation:jakarta.validation-api:3.0.0'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '3.1.2'
 	compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.28'
 	annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.28'
 	testCompileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.28'
@@ -35,3 +36,4 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+

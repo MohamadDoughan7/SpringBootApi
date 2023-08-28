@@ -1,0 +1,66 @@
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.course.CourseMapper">
+
+  <resultMap id="courseResultMap" type="com.example.demo.course.Course">
+    <id property="courseId" column="course_id" />
+    <result property="courseName" column="course_name" />
+    <result property="field" column="field" />
+    <result property="capacity" column="capacity" />
+  </resultMap>
+
+  <select id="getAllCourses" resultMap="courseResultMap">
+    SELECT *
+    FROM courses
+  </select>
+
+  <select id="findById" resultMap="courseResultMap" parameterType="java.lang.Long">
+    SELECT *
+    FROM courses
+    WHERE course_id = #{courseId}
+  </select>
+
+  <select id="findCourseByName" resultMap="courseResultMap" parameterType="java.lang.String">
+    SELECT *
+    FROM courses
+    WHERE course_name = #{courseName}
+  </select>
+
+  <insert id="insertCourse" parameterType="com.example.demo.course.Course" useGeneratedKeys="true" keyProperty="courseId">
+    INSERT INTO courses
+    (
+    course_name,
+    field,
+    capacity
+    )
+    VALUES
+    (
+    #{courseName},
+    #{field},
+    #{capacity}
+    )
+  </insert>
+
+  <update id="updateCourse" parameterType="com.example.demo.course.Course">
+    UPDATE courses
+    SET
+    course_name = #{courseName},
+    field = #{field},
+    capacity = #{capacity}
+    WHERE course_id = #{courseId}
+  </update>
+
+  <delete id="deleteCourseById" parameterType="java.lang.Long">
+    DELETE
+    FROM courses
+    WHERE course_id = #{courseId}
+  </delete>
+
+  <select id="existsById" resultType="boolean" parameterType="java.lang.Long">
+    SELECT EXISTS
+    (SELECT 1 FROM courses
+    WHERE course_id = #{courseId})
+  </select>
+
+</mapper>

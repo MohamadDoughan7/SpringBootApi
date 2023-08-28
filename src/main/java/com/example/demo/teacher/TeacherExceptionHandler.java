@@ -1,8 +1,8 @@
-package com.example.demo.student;
+package com.example.demo.teacher;
 
 import com.example.demo.shared.exceptions.ApiException;
-import com.example.demo.student.exceptions.StudentEmailAlreadyTakenException;
-import com.example.demo.student.exceptions.StudentNotFoundException;
+import com.example.demo.teacher.exceptions.TeacherEmailAlreadyTakenException;
+import com.example.demo.teacher.exceptions.TeacherNotFoundException;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import lombok.extern.log4j.Log4j2;
@@ -19,13 +19,13 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 @Order(Ordered.HIGHEST_PRECEDENCE)
 @Log4j2
-public class StudentExceptionHandler {
+public class TeacherExceptionHandler {
 
   /*
-  Handling the student not found exception.
+  Handling the teacher not found exception.
    */
-  @ExceptionHandler(StudentNotFoundException.class)
-  public ResponseEntity<Object> handleStudentNotFoundException(StudentNotFoundException ex) {
+  @ExceptionHandler(TeacherNotFoundException.class)
+  public ResponseEntity<Object> handleTeacherNotFoundException(TeacherNotFoundException ex) {
     String errorMessage= ex.getMessage();
     ApiException apiException = new ApiException(
         errorMessage,
@@ -37,11 +37,11 @@ public class StudentExceptionHandler {
   }
 
   /*
-  Handling the email already taken exception.
+  Handling the teacher email already taken exception.
    */
-  @ExceptionHandler(StudentEmailAlreadyTakenException.class)
-  public ResponseEntity<Object> handleEmailAlreadyTakenException(
-      StudentEmailAlreadyTakenException ex) {
+  @ExceptionHandler(TeacherEmailAlreadyTakenException.class)
+  public ResponseEntity<Object> handleTeacherEmailAlreadyTakenException(
+      TeacherEmailAlreadyTakenException ex) {
     String errorMessage = ex.getMessage();
     ApiException apiException = new ApiException(
         errorMessage,

@@ -1,7 +1,6 @@
 package com.example.demo.student.response;
 
 import java.time.LocalDate;
-import java.time.Period;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,7 +15,7 @@ public class StudentResponse {
 
 
   /*
-   This id field is for generating an id for each student by the server.
+   This id field is automatically generated for the student by the server.
    It is a unique identifier for each student record.
    */
 
@@ -47,12 +46,4 @@ public class StudentResponse {
    */
   private Integer age;
 
-  /**
-   * This method is for calculating the age of the student based on his date of birth.
-   *
-   * @return the age of the student
-   */
-  public Integer getAge() {
-    return Period.between(dob, LocalDate.now()).getYears();
-  }
 }

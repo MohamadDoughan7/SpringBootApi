@@ -1,0 +1,62 @@
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.distribution.DistributionMapper">
+
+  <resultMap id="distributionResultMap" type="com.example.demo.distribution.Distribution">
+    <id property="teacherId" column="teacher_id" />
+    <id property="courseId" column="course_id" />
+  </resultMap>
+
+  <select id="getAllDistributions" resultMap="distributionResultMap">
+    SELECT *
+    FROM distributions
+  </select>
+
+  <select id="findByIds" resultMap="distributionResultMap" parameterType="java.lang.Long">
+    SELECT *
+    FROM distributions
+    WHERE teacher_id = #{teacherId}
+    And course_id = #{courseId}
+  </select>
+
+
+  <insert id="insertDistribution" parameterType="com.example.demo.distribution.Distribution" useGeneratedKeys="false" >
+    INSERT INTO distributions
+    (
+    teacher_id,
+    course_id
+    )
+    VALUES
+    (
+    #{teacherId},
+    #{courseId}
+    )
+  </insert>
+
+
+  <delete id="deleteDistributionByIds" parameterType="java.lang.Long">
+    DELETE
+    FROM distributions
+    WHERE teacher_id = #{teacherId}
+    AND course_id = #{courseId}
+  </delete>
+
+  <select id="existsByIds" resultType="boolean" parameterType="java.lang.Long">
+    SELECT EXISTS
+    (SELECT 1 FROM distributions
+    WHERE teacher_id = #{teacherId}
+    AND course_id = #{courseId})
+  </select>
+
+  <select id="getDistributionCountByTeacherId" resultType="int" parameterType="java.lang.Long">
+    SELECT COUNT(*) FROM distributions
+    WHERE teacher_id = #{teacherId}
+  </select>
+
+  <select id="getDistributionCountByCourseId" resultType="int" parameterType="java.lang.Long">
+    SELECT COUNT(*) FROM distributions
+    WHERE course_id = #{courseId}
+  </select>
+
+</mapper>

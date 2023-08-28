@@ -1,8 +1,7 @@
-package com.example.demo.student;
+package com.example.demo.teacher;
 
 import jakarta.validation.constraints.NotBlank;
 import java.time.LocalDate;
-import java.time.Period;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor(force = true)
 @RequiredArgsConstructor
-public class Student {
+public class Teacher {
 
   /*
    * This id field is for generating an id for each student by the server.
@@ -45,22 +44,10 @@ public class Student {
    * It cannot be null.
    */
   @NonNull
-  @NotBlank (message = "Email field cannot be blank")
+  @NotBlank(message = "Email field cannot be blank")
   private String email;
 
-  /*
-   * Transient is used for telling the server that age is not a value that should be inputted,
-   * it should be generated based on the date of birth, and it is not stored in the database.
-   * Age is calculated and mapped to the age property using the getAge() method.
-   */
-  private transient Integer age;
+  @NonNull
+  private String subject;
 
-  /**
-   * This method is for calculating the age of the student based on his date of birth.
-   *
-   * @return the age of the student
-   */
-  public Integer getAge() {
-    return Period.between(dob, LocalDate.now()).getYears();
-  }
 }

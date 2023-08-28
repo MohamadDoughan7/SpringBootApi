@@ -1,4 +1,4 @@
-package com.example.demo.student.exceptions;
+package com.example.demo.shared.exceptions;
 
 /**
  * This class represents the invalid date of birth exception.

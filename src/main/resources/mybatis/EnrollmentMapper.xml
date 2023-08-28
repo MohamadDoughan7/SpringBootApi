@@ -1,0 +1,63 @@
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.enrollment.EnrollmentMapper">
+
+  <resultMap id="enrollmentResultMap" type="com.example.demo.enrollment.Enrollment">
+    <id property="studentId" column="student_id" />
+    <id property="courseId" column="course_id" />
+  </resultMap>
+
+  <select id="getAllEnrollments" resultMap="enrollmentResultMap">
+    SELECT *
+    FROM enrollments
+  </select>
+
+  <select id="findByIds" resultMap="enrollmentResultMap" parameterType="java.lang.Long">
+    SELECT *
+    FROM enrollments
+    WHERE student_id = #{studentId}
+    And course_id = #{courseId}
+  </select>
+
+
+  <insert id="insertEnrollment" parameterType="com.example.demo.enrollment.Enrollment" useGeneratedKeys="false" >
+    INSERT INTO enrollments
+    (
+    student_id,
+    course_id
+    )
+    VALUES
+    (
+    #{studentId},
+    #{courseId}
+    )
+  </insert>
+
+
+  <delete id="deleteEnrollmentByIds" parameterType="java.lang.Long">
+    DELETE
+    FROM enrollments
+    WHERE student_id = #{studentId}
+    AND course_id = #{courseId}
+  </delete>
+
+  <select id="existsByIds" resultType="boolean" parameterType="java.lang.Long">
+    SELECT EXISTS
+    (SELECT 1 FROM enrollments
+    WHERE student_id = #{studentId}
+    AND course_id = #{courseId})
+  </select>
+
+  <select id="getEnrollmentCountByCourseId" resultType="int" parameterType="java.lang.Long">
+    SELECT COUNT(*) FROM enrollments
+    WHERE course_id = #{courseId}
+  </select>
+
+  <select id="getEnrollmentCountByStudentId" resultType="int" parameterType="java.lang.Long">
+    SELECT COUNT(*) FROM enrollments
+    WHERE student_id = #{studentId}
+  </select>
+
+</mapper>
+

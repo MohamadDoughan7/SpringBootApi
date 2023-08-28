@@ -9,6 +9,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 @MapperScan("com.example.demo.student")
+@MapperScan("com.example.demo.teacher")
+@MapperScan("com.example.demo.course")
+@MapperScan("com.example.demo.enrollment")
+@MapperScan("com.example.demo.distribution")
 public class DemoApplication {
 
   /**
@@ -18,6 +22,5 @@ public class DemoApplication {
     SpringApplication.run(DemoApplication.class, args);
 
   }
-
 
 }
