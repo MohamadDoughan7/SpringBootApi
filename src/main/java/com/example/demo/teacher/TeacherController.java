@@ -1,9 +1,11 @@
 package com.example.demo.teacher;
 
-import com.example.demo.shared.Validation;
-import com.example.demo.teacher.request.TeacherRequest;
-import com.example.demo.teacher.response.TeacherResponse;
-import com.example.demo.teacher.response.TeacherResponseList;
+import com.example.demo.teacher.request.AddTeacherRequest;
+import com.example.demo.teacher.request.UpdateTeacherRequest;
+import com.example.demo.teacher.response.AddTeacherResponse;
+import com.example.demo.teacher.response.DeleteTeacherResponse;
+import com.example.demo.teacher.response.TeacherResponses;
+import com.example.demo.teacher.response.UpdateTeacherResponse;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -34,19 +35,17 @@ public class TeacherController {
    * @return the list of teachers
    */
   @GetMapping
-  public ResponseEntity<TeacherResponseList> getTeachers() {
+  public ResponseEntity<TeacherResponses> getTeachers() {
 
     /*
     Get the list of teachers from the service.
      */
-    TeacherResponseList teachers = teacherService.getTeachers();
+    TeacherResponses teachers = teacherService.getTeachers();
 
     /*
     Generating the response.
      */
     return new ResponseEntity<>(teachers, HttpStatus.OK);
-
-
   }
 
   /**
@@ -56,20 +55,13 @@ public class TeacherController {
    * @return the added teacher response
    */
   @PostMapping
-  public ResponseEntity<TeacherResponse> createNewTeacher(@Valid
-  @RequestBody TeacherRequest request) {
-
-    /*
-    Validate the name, email and dob before adding a new teacher.
-     */
-    Validation.validateName(request.getName());
-    Validation.validateEmail(request.getEmail());
-    Validation.validateDOB(request.getDob());
+  public ResponseEntity<AddTeacherResponse> addNewTeacher(@Valid
+  @RequestBody AddTeacherRequest request) {
 
     /*
     Preparing the response.
      */
-    TeacherResponse newTeacher = teacherService.addTeacher(
+    AddTeacherResponse newTeacher = teacherService.addTeacher(
         request.getName(),
         request.getDob(),
         request.getEmail(),
@@ -84,59 +76,49 @@ public class TeacherController {
   /**
    * Deletes a teacher from the repository.
    *
-   * @param teacherId the ID of the teacher to be deleted
+   * @param id the ID of the teacher to be deleted
    * @return the deletion result
    */
-  @DeleteMapping(path = "{teacherId}")
-  public ResponseEntity<String> deleteTeacher(@PathVariable("teacherId") Long teacherId) {
+  @DeleteMapping(path = "{id}")
+  public ResponseEntity<DeleteTeacherResponse> deleteTeacher(@PathVariable("id") Long id) {
 
     /*
     Preparing the response.
      */
-    teacherService.deleteTeacherById(teacherId);
-
-
+    teacherService.deleteTeacherById(id);
+    DeleteTeacherResponse response = new DeleteTeacherResponse();
+    response.setId(id);
     /*
     Generating the response.
      */
-    return ResponseEntity.ok("Teacher deleted successfully");
+    return new ResponseEntity<>(response, HttpStatus.OK);
   }
 
   /**
    * Updates the attributes of a teacher.
    *
-   * @param teacherId the ID of the teacher to be updated
-   * @param name      the updated name
-   * @param email     the updated email
-   * @return the update result
+   * @param id      of the teacher to be updated
+   * @param request of the changes to be done to a teacher
+   * @return response of the updated teacher.
    */
-  @PutMapping("{teacherId}")
-  public ResponseEntity<String> updateTeacher(
-      @PathVariable("teacherId") Long teacherId,
-      @RequestParam(required = false) String name,
-      @RequestParam(required = false) String email) {
-
-
-    /*
-    Validating the name and email before updating a teacher.
-     */
-    Validation.validateName(name);
-    Validation.validateEmail(email);
-
-
+  @PutMapping("{id}")
+  public ResponseEntity<UpdateTeacherResponse> updateTeacher(
+      @PathVariable("id") Long id,
+      @RequestBody UpdateTeacherRequest request) {
     /*
     Preparing the response.
      */
-    teacherService.updateTeacherById(teacherId, name, email);
-
+    teacherService.updateTeacherById(
+        id,
+        request.getName(),
+        request.getEmail(),
+        request.getDob(),
+        request.getSubject());
+    UpdateTeacherResponse response = new UpdateTeacherResponse();
+    response.setId(id);
     /*
     Generating the response.
      */
-    return ResponseEntity.ok("Teacher updated successfully");
+    return new ResponseEntity<>(response, HttpStatus.OK);
   }
 }
-
-
-
-
-

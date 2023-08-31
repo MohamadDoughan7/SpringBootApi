@@ -1,18 +1,16 @@
 package com.example.demo.student;
 
-import static com.example.demo.shared.Validation.validateEmail;
-import static com.example.demo.shared.Validation.validateName;
-
 import com.example.demo.student.exceptions.StudentEmailAlreadyTakenException;
 import com.example.demo.student.exceptions.StudentNotFoundException;
-import com.example.demo.student.response.StudentResponse;
-import com.example.demo.student.response.StudentResponseList;
+import com.example.demo.student.response.AddStudentResponse;
+import com.example.demo.student.response.GetStudentResponse;
+import com.example.demo.student.response.StudentResponses;
 import java.time.LocalDate;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * This class is for performing the business logic for the methods within the student package.
@@ -22,32 +20,26 @@ import org.springframework.transaction.annotation.Transactional;
 @Log4j2
 public class StudentService {
 
-
-  private final StudentMapper studentMapper;
+  private static final ModelMapper modelMapper = new ModelMapper();
+  private final StudentRepository studentRepository;
 
   /**
    * Retrieves the list of available students.
    *
    * @return list of available students.
    */
-  public StudentResponseList getStudents() {
+  public StudentResponses getStudents() {
     /*
     Log info about displaying the list of students.
      */
     log.info("List of existing students has been displayed.");
-
     /*
-    Get the list of students from the service using the StudentMap interface,
+    Get the list of students from the service using the StudentRepository interface,
     and then build the response.
      */
-    return new StudentResponseList(
-        studentMapper.getAllStudents().stream()
-            .map(student -> new StudentResponse(
-                student.getId(),
-                student.getName(),
-                student.getDob(),
-                student.getEmail(),
-                student.getAge()))
+    return new StudentResponses(
+        studentRepository.getAllStudents().parallelStream()
+            .map(studentEntity -> modelMapper.map(studentEntity, GetStudentResponse.class))
             .collect(Collectors.toList())
     );
   }
@@ -61,33 +53,36 @@ public class StudentService {
    * @return the added student
    * @throws StudentEmailAlreadyTakenException if the email is already taken
    */
-  @Transactional(rollbackFor = {Exception.class})
-  public StudentResponse addNewStudent(String name, LocalDate dob, String email) {
-
+  public AddStudentResponse addNewStudent(
+      String name,
+      LocalDate dob,
+      String email) {
     /*
-     Check if the email already exists in the database.
-     */
-    if (studentMapper.findStudentByEmail(email) != null) {
+    Check if the email already exists in the database.
+    */
+    if (studentRepository.findStudentByEmail(email) != null) {
       String errorMessage = "Email already exists: " + email;
       throw new StudentEmailAlreadyTakenException(errorMessage);
     }
-
     /*
-     Create a new Student object and insert it into the database using the StudentMap interface.
-     */
-    Student student = new Student(name, dob, email);
-    studentMapper.insertStudent(student);
-
+    Create a new StudentEntity object
+    */
+    StudentEntity studentEntity = new StudentEntity();
+    studentEntity.setName(name);
+    studentEntity.setEmail(email);
+    studentEntity.setDob(dob);
     /*
-     Log info about the new student added.
+    Insert a new studentEntity in database.
      */
-    log.info("New student added: {}", student);
-
+    studentRepository.insertStudent(studentEntity);
     /*
-     Map the newly inserted student to a StudentResponse object and return it.
+    Log info about the new studentEntity added.
+    */
+    log.info("New studentEntity added: {}", studentEntity);
+    /*
+     Map the newly inserted studentEntity to a AddStudentResponse object and return it.
      */
-    return new StudentResponse(student.getId(), student.getName(), student.getDob(),
-        student.getEmail(), student.getAge());
+    return modelMapper.map(studentEntity, AddStudentResponse.class);
   }
 
   /**
@@ -100,15 +95,15 @@ public class StudentService {
     /*
      Check if the student exists in the database based on the provided id.
      */
-    if (!studentMapper.existsById(studentId)) {
-      String errorMessage = "Student with id " + studentId + " does not exist.";
+    if (!studentRepository.existsById(studentId)) {
+      String errorMessage = "StudentEntity with id " + studentId + " does not exist.";
       throw new StudentNotFoundException(errorMessage);
     }
     /*
-     Delete the student from the database using the StudentMap interface.
+     Delete the student from the database using the StudentRepository interface.
      */
-    studentMapper.deleteStudentById(studentId);
-    log.info("Student with id " + studentId + " has been deleted.");
+    studentRepository.deleteStudentById(studentId);
+    log.info("StudentEntity with id " + studentId + " has been deleted.");
   }
 
   /**
@@ -121,28 +116,27 @@ public class StudentService {
    * @throws StudentEmailAlreadyTakenException if the email is already taken
    */
 
-  public void updateStudentById(Long studentId, String name, String email) {
-    validateName(name);
-    validateEmail(email);
+  public void updateStudentById(Long studentId, String name, String email, LocalDate dob) {
     /*
-     Find the existing student by ID using the StudentMap interface.
+     Find the existing studentEntity by ID using the StudentRepository interface.
      */
-    Student student = studentMapper.findById(studentId);
-    if (student == null) {
-      String errorMessage = "Student with id " + studentId + " does not exist.";
+    StudentEntity studentEntity = studentRepository.findById(studentId);
+    if (studentEntity == null) {
+      String errorMessage = "StudentEntity with id " + studentId + " does not exist.";
       throw new StudentNotFoundException(errorMessage);
     }
 
     /*
-     Update the name and email of the student.
+     Update the name, email, and dob of the studentEntity.
      */
-    student.setName(name);
-    student.setEmail(email);
+    studentEntity.setName(name);
+    studentEntity.setEmail(email);
+    studentEntity.setDob(dob);
 
     /*
-     Update the student in the database using the StudentMap interface.
+     Update the studentEntity in the database using the StudentRepository interface.
      */
-    studentMapper.updateStudent(student);
-    log.info("Student with id " + studentId + " has been updated.");
+    studentRepository.updateStudent(studentEntity);
+    log.info("StudentEntity with id " + studentId + " has been updated.");
   }
 }

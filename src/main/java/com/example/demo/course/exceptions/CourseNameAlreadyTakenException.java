@@ -11,5 +11,4 @@ public class CourseNameAlreadyTakenException extends IllegalStateException {
   public CourseNameAlreadyTakenException(String message) {
     super(message);
   }
-
 }

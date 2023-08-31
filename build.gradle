@@ -1,39 +1,39 @@
 plugins {
-	id 'java'
-	id 'org.springframework.boot' version '3.1.1'
-	id 'io.spring.dependency-management' version '1.1.0'
+    id 'java'
+    id 'org.springframework.boot' version '3.1.1'
+    id 'io.spring.dependency-management' version '1.1.0'
 }
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 
 java {
-	sourceCompatibility = '17'
+    sourceCompatibility = '17'
 }
 
 repositories {
-	gradlePluginPortal()
-	mavenCentral()
+    gradlePluginPortal()
+    mavenCentral()
 }
 
 dependencies {
-	implementation group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '3.0.2'
-	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '3.1.0'
-	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-logging', version: '3.1.2'
-	testImplementation 'junit:junit:4.13.1'
-	testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
-	testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '3.1.0'
-	runtimeOnly group: 'org.postgresql', name: 'postgresql', version: '42.5.4'
-	implementation 'jakarta.validation:jakarta.validation-api:3.0.0'
-	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '3.1.2'
-	compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.28'
-	annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.28'
-	testCompileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.28'
-	testAnnotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.28'
-	testImplementation group: 'com.h2database', name: 'h2', version: '2.2.220'
+    implementation group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '3.0.2'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '3.1.0'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-logging', version: '3.1.2'
+    implementation 'org.modelmapper:modelmapper:2.4.4'
+    testImplementation 'junit:junit:4.13.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+    testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '3.1.0'
+    runtimeOnly group: 'org.postgresql', name: 'postgresql', version: '42.5.4'
+    implementation 'jakarta.validation:jakarta.validation-api:3.0.0'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '3.1.2'
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.28'
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.28'
+    testCompileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.28'
+    testAnnotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.28'
+    testImplementation group: 'com.h2database', name: 'h2', version: '2.2.220'
 }
 
 tasks.named('test') {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }
-

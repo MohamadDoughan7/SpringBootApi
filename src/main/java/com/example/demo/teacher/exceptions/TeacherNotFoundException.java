@@ -12,6 +12,3 @@ public class TeacherNotFoundException extends RuntimeException {
     super(message);
   }
 }
-
-
-

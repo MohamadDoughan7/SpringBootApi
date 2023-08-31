@@ -11,5 +11,4 @@ public class TeacherEmailAlreadyTakenException extends IllegalStateException {
   public TeacherEmailAlreadyTakenException(String message) {
     super(message);
   }
-
 }

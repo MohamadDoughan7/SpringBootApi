@@ -1,16 +1,17 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.enrollment.EnrollmentMapper">
+<mapper namespace="com.example.demo.course.enrollment.EnrollmentRepository">
 
-  <resultMap id="enrollmentResultMap" type="com.example.demo.enrollment.Enrollment">
-    <id property="studentId" column="student_id" />
-    <id property="courseId" column="course_id" />
+  <resultMap id="enrollmentResultMap" type="com.example.demo.course.enrollment.EnrollmentEntity">
+    <id property="studentId" column="student_id"/>
+    <id property="courseId" column="course_id"/>
   </resultMap>
 
-  <select id="getAllEnrollments" resultMap="enrollmentResultMap">
+  <select id="getEnrollmentsByCourseId" resultMap="enrollmentResultMap">
     SELECT *
     FROM enrollments
+    Where course_id = #{courseId}
   </select>
 
   <select id="findByIds" resultMap="enrollmentResultMap" parameterType="java.lang.Long">
@@ -21,7 +22,8 @@
   </select>
 
 
-  <insert id="insertEnrollment" parameterType="com.example.demo.enrollment.Enrollment" useGeneratedKeys="false" >
+  <insert id="insertEnrollment" parameterType="com.example.demo.course.enrollment.EnrollmentEntity"
+    useGeneratedKeys="false">
     INSERT INTO enrollments
     (
     student_id,
@@ -33,7 +35,6 @@
     #{courseId}
     )
   </insert>
-
 
   <delete id="deleteEnrollmentByIds" parameterType="java.lang.Long">
     DELETE
@@ -60,4 +61,3 @@
   </select>
 
 </mapper>
-

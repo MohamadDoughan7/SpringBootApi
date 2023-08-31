@@ -1,6 +1,6 @@
 package com.example.demo.student;
 
-import com.example.demo.shared.exceptions.ApiException;
+import com.example.demo.shared.ApiException;
 import com.example.demo.student.exceptions.StudentEmailAlreadyTakenException;
 import com.example.demo.student.exceptions.StudentNotFoundException;
 import java.time.ZoneId;
@@ -26,7 +26,7 @@ public class StudentExceptionHandler {
    */
   @ExceptionHandler(StudentNotFoundException.class)
   public ResponseEntity<Object> handleStudentNotFoundException(StudentNotFoundException ex) {
-    String errorMessage= ex.getMessage();
+    String errorMessage = ex.getMessage();
     ApiException apiException = new ApiException(
         errorMessage,
         "Non Existing resource",
@@ -51,6 +51,4 @@ public class StudentExceptionHandler {
     log.error(errorMessage);
     return new ResponseEntity<>(apiException, HttpStatus.UNPROCESSABLE_ENTITY);
   }
-
-
 }

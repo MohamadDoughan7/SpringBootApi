@@ -1,9 +1,6 @@
 package com.example.demo.shared;
 
-import com.example.demo.shared.exceptions.ApiException;
-import com.example.demo.shared.exceptions.InvalidDOBException;
-import com.example.demo.shared.exceptions.InvalidEmailFormatException;
-import com.example.demo.shared.exceptions.InvalidNameException;
+import com.example.demo.course.enrollment.exceptions.EnrollmentNotFoundException;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import lombok.extern.log4j.Log4j2;
@@ -29,28 +26,27 @@ public class GlobalExceptionHandler {
     String errorMessage = ex.getMessage();
     log.error(errorMessage);
     ApiException apiException = new ApiException(
-        errorMessage,
+        "Generic Error Check with the Support.",
         "Generic error",
         ZonedDateTime.now(ZoneId.of("Z"))
     );
     return new ResponseEntity<>(apiException, HttpStatus.INTERNAL_SERVER_ERROR);
   }
 
-
- /*
- Handling the httpMessageNotReadableException.
-  */
+  /*
+  Handling the httpMessageNotReadableException.
+   */
   @ExceptionHandler(HttpMessageNotReadableException.class)
   public ResponseEntity<Object> handleHttpMessageNotReadableException
-      (HttpMessageNotReadableException ex) {
+  (HttpMessageNotReadableException ex) {
     String errorMessage = ex.getMessage();
     log.error(errorMessage);
     ApiException apiException = new ApiException(
-        errorMessage,
         "Message not readable",
+        "Input error",
         ZonedDateTime.now(ZoneId.of("Z"))
     );
-    return new ResponseEntity<>(apiException, HttpStatus.BAD_REQUEST);
+    return new ResponseEntity<>(apiException, HttpStatus.UNPROCESSABLE_ENTITY);
   }
 
   /*
@@ -58,61 +54,29 @@ public class GlobalExceptionHandler {
    */
   @ExceptionHandler(MethodArgumentNotValidException.class)
   public ResponseEntity<Object> handleMethodArgumentNotValidException
-      (MethodArgumentNotValidException ex) {
+  (MethodArgumentNotValidException ex) {
     String errorMessage = ex.getMessage();
     log.error(errorMessage);
     ApiException apiException = new ApiException(
-        errorMessage,
         "Invalid Blank Or  Null Resource",
+        "Validation Error",
         ZonedDateTime.now(ZoneId.of("Z"))
     );
-    return new ResponseEntity<>(apiException, HttpStatus.BAD_REQUEST);
+    return new ResponseEntity<>(apiException, HttpStatus.UNPROCESSABLE_ENTITY);
   }
 
   /*
-  Handling invalid email exception.
+  Handling the enrollment not found exception.
    */
-  @ExceptionHandler(InvalidEmailFormatException.class)
-  public ResponseEntity<Object> handleInvalidEmailFormatException(InvalidEmailFormatException ex) {
+  @ExceptionHandler(EnrollmentNotFoundException.class)
+  public ResponseEntity<Object> handleEnrollmentNotFoundException(EnrollmentNotFoundException ex) {
     String errorMessage = ex.getMessage();
     ApiException apiException = new ApiException(
         errorMessage,
-        "Invalid format",
+        "Non Existing resource",
         ZonedDateTime.now(ZoneId.of("Z"))
     );
     log.error(errorMessage);
     return new ResponseEntity<>(apiException, HttpStatus.UNPROCESSABLE_ENTITY);
   }
-
-  /*
-  Handling the invalid name exception.
-   */
-  @ExceptionHandler(InvalidNameException.class)
-  public ResponseEntity<Object> handleInvalidNameException(InvalidNameException ex) {
-    String errorMessage = ex.getMessage();
-    ApiException apiException = new ApiException(
-        errorMessage,
-        "Invalid format",
-        ZonedDateTime.now(ZoneId.of("Z"))
-    );
-    log.error(errorMessage);
-    return new ResponseEntity<>(apiException, HttpStatus.UNPROCESSABLE_ENTITY);
-  }
-
-  /*
-  Handling the invalid date of birth exception.
-   */
-  @ExceptionHandler(InvalidDOBException.class)
-  public ResponseEntity<Object> handleInvalidDOBException(InvalidDOBException ex) {
-    String errorMessage = ex.getMessage();
-    ApiException apiException = new ApiException(
-        errorMessage,
-        "Invalid format",
-        ZonedDateTime.now(ZoneId.of("Z"))
-    );
-    log.error(errorMessage);
-    return new ResponseEntity<>(apiException, HttpStatus.UNPROCESSABLE_ENTITY);
-  }
-
-
 }

@@ -2,7 +2,7 @@ package com.example.demo.course;
 
 import com.example.demo.course.exceptions.CourseNameAlreadyTakenException;
 import com.example.demo.course.exceptions.CourseNotFoundException;
-import com.example.demo.shared.exceptions.ApiException;
+import com.example.demo.shared.ApiException;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import lombok.extern.log4j.Log4j2;
@@ -26,7 +26,7 @@ public class CourseExceptionHandler {
    */
   @ExceptionHandler(CourseNotFoundException.class)
   public ResponseEntity<Object> handleCourseNotFoundException(CourseNotFoundException ex) {
-    String errorMessage= ex.getMessage();
+    String errorMessage = ex.getMessage();
     ApiException apiException = new ApiException(
         errorMessage,
         "Non Existing resource",
@@ -51,6 +51,4 @@ public class CourseExceptionHandler {
     log.warn(errorMessage);
     return new ResponseEntity<>(apiException, HttpStatus.UNPROCESSABLE_ENTITY);
   }
-
-
 }

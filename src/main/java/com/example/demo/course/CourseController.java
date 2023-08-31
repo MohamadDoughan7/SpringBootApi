@@ -1,10 +1,14 @@
 package com.example.demo.course;
 
 import com.example.demo.course.request.AddCourseRequest;
-import com.example.demo.course.response.CourseResponse;
-import com.example.demo.course.response.CourseResponseList;
-import com.example.demo.shared.Validation;
+import com.example.demo.course.request.UpdateCourseRequest;
+import com.example.demo.course.response.AddCourseResponse;
+import com.example.demo.course.response.CourseResponses;
+import com.example.demo.course.response.DeleteCourseResponse;
+import com.example.demo.course.response.GetCourseResponse;
+import com.example.demo.course.response.UpdateCourseResponse;
 import jakarta.validation.Valid;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +19,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -34,15 +37,16 @@ public class CourseController {
    * @return the list of courses
    */
   @GetMapping
-  public ResponseEntity<CourseResponseList> getCourses() {
+  public ResponseEntity<CourseResponses> getCourses() {
     /*
-    Get the list of courses from the service.
+    Get the list of course from the service.
      */
-    CourseResponseList courses = courseService.getCourses();
+    List<GetCourseResponse> courses = courseService.getCourses();
+    CourseResponses courseResponses = new CourseResponses(courses);
     /*
     Generating the response.
      */
-    return new ResponseEntity<>(courses, HttpStatus.OK);
+    return new ResponseEntity<>(courseResponses, HttpStatus.OK);
   }
 
   /**
@@ -52,76 +56,67 @@ public class CourseController {
    * @return the added course response
    */
   @PostMapping
-  public ResponseEntity<CourseResponse> createNewCourse(@Valid
-  @RequestBody AddCourseRequest request) {
-    /*
-    Validate the course name before adding a new course.
-     */
-    //TODO: this validation need to be done on annotation level.
-    Validation.validateName(request.getCourseName());
+  public ResponseEntity<AddCourseResponse> addNewCourse(
+      @Valid @RequestBody AddCourseRequest request) {
     /*
     Preparing the response.
      */
-    CourseResponse newCourse = courseService.addCourse(
-        request.getCourseName(),
+    AddCourseResponse newAddCourseResponse = courseService.addCourse(
+        request.getName(),
+        request.getCode(),
         request.getField(),
         request.getCapacity());
     /*
     Generating the response.
      */
-    return ResponseEntity.ok(newCourse);
+    return ResponseEntity.ok(newAddCourseResponse);
   }
 
   /**
    * Deletes a course from the database.
    *
-   * @param courseId the ID of the course to be deleted
+   * @param id the ID of the course to be deleted
    * @return the deletion result
    */
-  @DeleteMapping(path = "{courseId}")
-  public ResponseEntity<String> deleteCourse(@PathVariable("courseId") Long courseId) {
+  @DeleteMapping(path = "{id}")
+  public ResponseEntity<DeleteCourseResponse> deleteCourse(
+      @PathVariable("id") Long id) {
     /*
     Preparing the response.
      */
-    courseService.deleteCourseById(courseId);
+    courseService.deleteCourseById(id);
+    DeleteCourseResponse response = new DeleteCourseResponse();
+    response.setId(id);
     /*
     Generating the response.
      */
-    return ResponseEntity.ok("Course deleted successfully");
+    return new ResponseEntity<>(response, HttpStatus.OK);
   }
 
   /**
    * Updates the attributes of a course.
-   *
-   * @param courseId the ID of the course to be updated
-   * @param courseName  the updated name
-   * @param field  the updated filed
-   * @param capacity the updated capacity
-   * @return the update result
+   * @param id the id of the course to be deleted
+   * @param request the request sent to update a course
+   * @return the response of teh updated course.
    */
-  @PutMapping("{courseId}")
-  public ResponseEntity<String> updateCourse(
-      @PathVariable("courseId") Long courseId,
-      @RequestParam(required = false) String courseName,
-      @RequestParam(required = false) String field,
-      @RequestParam(required = false) Integer capacity) {
-    /*
-    Validating the course name before updating a course.
-     */
-    //TODO can be implemented on annotation level.
-    Validation.validateName(courseName);
+  @PutMapping("{id}")
+  public ResponseEntity<UpdateCourseResponse> updateCourse(
+      @PathVariable("id") Long id,
+      @RequestBody UpdateCourseRequest request){
     /*
     Preparing the response.
      */
-    courseService.updateCourseById(courseId, courseName, field, capacity);
+    courseService.updateCourseById(
+        id,
+        request.getName(),
+        request.getCode(),
+        request.getField(),
+        request.getCapacity());
+    UpdateCourseResponse response = new UpdateCourseResponse();
+    response.setId(id);
     /*
     Generating the response.
      */
-    return ResponseEntity.ok("Course updated successfully");
+    return new ResponseEntity<>(response, HttpStatus.OK);
   }
 }
-
-
-
-
-

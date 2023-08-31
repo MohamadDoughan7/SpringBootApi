@@ -1,0 +1,37 @@
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.enrollmentmetric.EnrollmentMetricRepository">
+
+  <resultMap id="enrollmentResultMap" type="com.example.demo.enrollmentmetric.EnrollmentMetric">
+    <id property="studentId" column="student_id"/>
+    <id property="courseId" column="course_id"/>
+    <result property="studentName" column="student_name"/>
+    <result property="courseName" column="course_name"/>
+    <result property="courseCode" column="course_code"/>
+    <result property="teacherId" column="teacher_id"/>
+    <result property="teacherName" column="teacher_name"/>
+  </resultMap>
+
+
+  <select id="getEnrollmentMetric" resultMap="enrollmentResultMap">
+    SELECT s.id as student_id,
+    s.name as student_name,
+    c.course_id, course_name,
+    code as course_code,
+    t.id as teacher_id,
+    t.name as teacher_name
+    FROM students s,
+    teachers t,
+    courses c,
+    enrollments e,
+    distributions d
+    WHERE s.id= e.student_id
+    AND c.course_id = e.course_id
+    AND c.course_id = d.course_id
+    AND t.id = d.teacher_id
+    AND s.id = #{studentId}
+    AND c.course_id = #{courseId};
+  </select>
+
+</mapper>

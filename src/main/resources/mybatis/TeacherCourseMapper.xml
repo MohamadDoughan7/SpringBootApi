@@ -1,0 +1,68 @@
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.course.teachercourse.TeacherCourseRepository">
+
+  <resultMap id="teacherCourseResultMap"
+    type="com.example.demo.course.teachercourse.TeacherCourseEntity">
+    <id property="teacherId" column="teacher_id"/>
+    <id property="courseId" column="course_id"/>
+  </resultMap>
+
+  <select id="getTeacherCourseRelationsByCourseId" resultMap="teacherCourseResultMap">
+    SELECT *
+    FROM teacher_course
+    where course_id = #{courseId}
+  </select>
+
+  <select id="findByIds" resultMap="teacherCourseResultMap" parameterType="java.lang.Long">
+    SELECT *
+    FROM teacher_course
+    WHERE teacher_id = #{teacherId}
+    And course_id = #{courseId}
+  </select>
+
+
+  <insert id="insertTeacherCourseRelation"
+    parameterType="com.example.demo.course.teachercourse.TeacherCourseEntity"
+    useGeneratedKeys="false">
+    INSERT INTO teacher_course
+    (
+    teacher_id,
+    course_id
+    )
+    VALUES
+    (
+    #{teacherId},
+    #{courseId}
+    )
+  </insert>
+
+
+  <delete id="deleteTeacherCourseRelationByIds" parameterType="java.lang.Long">
+    DELETE
+    FROM teacher_course
+    WHERE teacher_id = #{teacherId}
+    AND course_id = #{courseId}
+  </delete>
+
+  <select id="existsByIds" resultType="boolean" parameterType="java.lang.Long">
+    SELECT EXISTS
+    (SELECT 1 FROM teacher_course
+    WHERE teacher_id = #{teacherId}
+    AND course_id = #{courseId})
+  </select>
+
+  <select id="getTeacherCourseRelationByTeacherId" resultType="int" parameterType="java.lang.Long">
+    SELECT COUNT(*)
+    FROM teacher_course
+    WHERE teacher_id = #{teacherId}
+  </select>
+
+  <select id="getTeacherCourseCountByCourseId" resultType="int" parameterType="java.lang.Long">
+    SELECT COUNT(*)
+    FROM teacher_course
+    WHERE course_id = #{courseId}
+  </select>
+
+</mapper>

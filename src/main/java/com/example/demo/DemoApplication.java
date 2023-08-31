@@ -13,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @MapperScan("com.example.demo.course")
 @MapperScan("com.example.demo.enrollment")
 @MapperScan("com.example.demo.distribution")
+@MapperScan("com.example.demo.enrollmentMetric")
 public class DemoApplication {
 
   /**
@@ -20,7 +21,5 @@ public class DemoApplication {
    */
   public static void main(String[] args) {
     SpringApplication.run(DemoApplication.class, args);
-
   }
-
 }

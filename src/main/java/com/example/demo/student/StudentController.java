@@ -1,9 +1,11 @@
 package com.example.demo.student;
 
-import com.example.demo.shared.Validation;
-import com.example.demo.student.request.StudentRequest;
-import com.example.demo.student.response.StudentResponse;
-import com.example.demo.student.response.StudentResponseList;
+import com.example.demo.student.request.AddStudentRequest;
+import com.example.demo.student.request.UpdateStudentRequest;
+import com.example.demo.student.response.AddStudentResponse;
+import com.example.demo.student.response.DeleteStudentResponse;
+import com.example.demo.student.response.StudentResponses;
+import com.example.demo.student.response.UpdateStudentResponse;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,7 +18,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -36,19 +37,17 @@ public class StudentController {
    * @return the list of students
    */
   @GetMapping
-  public ResponseEntity<StudentResponseList> getStudents() {
+  public ResponseEntity<StudentResponses> getStudents() {
 
     /*
     Get the list of students from the service.
      */
-    StudentResponseList students = studentService.getStudents();
+    StudentResponses students = studentService.getStudents();
 
     /*
     Generating the response.
      */
     return new ResponseEntity<>(students, HttpStatus.OK);
-
-
   }
 
   /**
@@ -58,20 +57,12 @@ public class StudentController {
    * @return the added student response
    */
   @PostMapping
-  public ResponseEntity<StudentResponse> createNewStudent(@Valid
-  @RequestBody StudentRequest request) {
-
-    /*
-    Validate the name, email and dob before adding a new student.
-     */
-    Validation.validateName(request.getName());
-    Validation.validateEmail(request.getEmail());
-    Validation.validateDOB(request.getDob());
-
+  public ResponseEntity<AddStudentResponse> addNewStudent(@Valid
+  @RequestBody AddStudentRequest request) {
     /*
     Preparing the response.
      */
-    StudentResponse newStudent = studentService.addNewStudent(
+    AddStudentResponse newStudent = studentService.addNewStudent(
         request.getName(),
         request.getDob(),
         request.getEmail());
@@ -85,59 +76,46 @@ public class StudentController {
   /**
    * Deletes a student from the repository.
    *
-   * @param studentId the ID of the student to be deleted
+   * @param id the ID of the student to be deleted
    * @return the deletion result
    */
-  @DeleteMapping(path = "{studentId}")
-  public ResponseEntity<String> deleteStudent(@PathVariable("studentId") Long studentId) {
-
+  @DeleteMapping(path = "{id}")
+  public ResponseEntity<DeleteStudentResponse> deleteStudent (@PathVariable("id") Long id) {
     /*
     Preparing the response.
      */
-    studentService.deleteStudentById(studentId);
-
-
+    studentService.deleteStudentById(id);
+    DeleteStudentResponse response = new DeleteStudentResponse();
+    response.setId(id);
     /*
     Generating the response.
      */
-    return ResponseEntity.ok("Student deleted successfully");
+    return new ResponseEntity<>(response, HttpStatus.OK);
   }
 
   /**
    * Updates the attributes of a student.
-   *
-   * @param studentId the ID of the student to be updated
-   * @param name      the updated name
-   * @param email     the updated email
-   * @return the update result
+   * @param id of the student to be updated
+   * @param request of the updates to be done to a course
+   * @return response with the updated student
    */
-  @PutMapping("{studentId}")
-  public ResponseEntity<String> updateStudent(
-      @PathVariable("studentId") Long studentId,
-      @RequestParam(required = false) String name,
-      @RequestParam(required = false) String email) {
-
-
-    /*
-    Validating the name and email before updating a student.
-     */
-    Validation.validateName(name);
-    Validation.validateEmail(email);
-
-
+  @PutMapping("{id}")
+  public ResponseEntity<UpdateStudentResponse> updateStudent(
+      @PathVariable("id") Long id,
+      @RequestBody UpdateStudentRequest request){
     /*
     Preparing the response.
      */
-    studentService.updateStudentById(studentId, name, email);
-
+    studentService.updateStudentById(
+        id,
+        request.getName(),
+        request.getEmail(),
+        request.getDob());
+    UpdateStudentResponse response = new UpdateStudentResponse();
+    response.setId(id);
     /*
     Generating the response.
      */
-    return ResponseEntity.ok("Student updated successfully");
+    return new ResponseEntity<>(response, HttpStatus.OK);
   }
 }
-
-
-
-
-

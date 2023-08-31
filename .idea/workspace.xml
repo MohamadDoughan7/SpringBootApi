@@ -4,81 +4,124 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52b32882-f377-451f-b160-6808934a9388" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/Course.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/CourseController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/CourseExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/CourseMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/CourseService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/exceptions/CourseNameAlreadyTakenException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/exceptions/CourseNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/request/AddCourseRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/response/CourseResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/response/CourseResponseList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/distribution/Distribution.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/distribution/DistributionController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/distribution/DistributionExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/distribution/DistributionMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/distribution/DistributionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/distribution/exceptions/DistributionAlreadyExistsException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/distribution/exceptions/DistributionNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/distribution/exceptions/MaximumNumberOfCoursesReachedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/distribution/exceptions/MaximumNumberOfTeachersReachedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/distribution/request/AddDistributionRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/distribution/response/DistributionResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/distribution/response/DistributionResponseList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/enrollment/Enrollment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/enrollment/EnrollmentController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/enrollment/EnrollmentExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/enrollment/EnrollmentMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/enrollment/EnrollmentService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/enrollment/exceptions/CourseCapacityExceededException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/enrollment/exceptions/EnrollmentAlreadyExistsException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/enrollment/exceptions/EnrollmentNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/enrollment/exceptions/MaximumEnrollmentReachedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/enrollment/request/AddEnrollmentRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/enrollment/response/EnrollmentResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/enrollment/response/EnrollmentResponseList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/shared/Validation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/shared/exceptions/ApiException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/student/response/StudentResponseList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/teacher/Teacher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/teacher/TeacherController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/teacher/TeacherExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/teacher/TeacherMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/teacher/TeacherService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/teacher/exceptions/TeacherEmailAlreadyTakenException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/teacher/exceptions/TeacherNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/teacher/request/TeacherRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/teacher/response/TeacherResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/teacher/response/TeacherResponseList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mybatis/CourseMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mybatis/DistributionMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mybatis/EnrollmentMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mybatis/TeacherMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="52b32882-f377-451f-b160-6808934a9388" name="Changes" comment="Refactor: Adding new entities">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/annotations/coursecodevalidator/CourseCodeValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/annotations/coursecodevalidator/ValidateCourseCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/annotations/coursenamevalidator/CourseNameValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/annotations/coursenamevalidator/ValidateCourseName.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/enrollment/EnrollmentEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/enrollment/request/DeleteEnrollmentRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/enrollment/response/DeleteEnrollmentResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/enrollment/response/GetEnrollmentResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/request/UpdateCourseRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/response/DeleteCourseResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/response/GetCourseResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/response/UpdateCourseResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/teachercourse/exceptions/TeacherCourseRelationNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/teachercourse/request/DeleteTeacherCourseRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/teachercourse/response/DeleteTeacherCourseResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/teachercourse/response/GetTeacherCourseResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/enrollmentmetric/EnrollmentMetricController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/enrollmentmetric/EnrollmentMetricRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/enrollmentmetric/EnrollmentMetricService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/enrollmentmetric/response/EnrollmentMetricResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/shared/annotations/dobvalidator/DOBValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/shared/annotations/dobvalidator/ValidateDOB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/shared/annotations/namevalidator/NameValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/shared/annotations/namevalidator/ValidateName.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/student/request/UpdateStudentRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/student/response/DeleteStudentResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/student/response/GetStudentResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/student/response/UpdateStudentResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/teacher/request/UpdateTeacherRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/teacher/response/DeleteTeacherResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/teacher/response/GetTeacherResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/teacher/response/UpdateTeacherResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mybatis/EnrollmentMetricMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/course/CourseControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/course/CourseExceptionHandlerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/course/CourseServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/course/annotations/coursecodevalidator/CourseCodeValidatorTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/course/annotations/coursenamevalidator/CourseNameValidatorTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/shared/GlobalExceptionHandlerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/shared/annotations/dobvalidator/DOBValidatorTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/shared/annotations/namevalidator/NameValidatorTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/student/StudentControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/student/StudentExceptionHandlerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/student/StudentServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/teacher/TeacherControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/teacher/TeacherExceptionHandlerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/teacher/TeacherServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/DemoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/DemoApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sharedPackage/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/shared/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/student/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/student/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/course/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/CourseEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/course/CourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/CourseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/course/CourseExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/CourseExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/course/CourseMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/CourseRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/course/CourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/CourseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/course/exceptions/CourseNameAlreadyTakenException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/exceptions/CourseNameAlreadyTakenException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/course/exceptions/CourseNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/exceptions/CourseNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/course/request/AddCourseRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/request/AddCourseRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/course/response/CourseResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/response/AddCourseResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/course/response/CourseResponseList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/response/CourseResponses.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/distribution/Distribution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/teachercourse/TeacherCourseEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/distribution/DistributionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/teachercourse/TeacherCourseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/distribution/DistributionExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/teachercourse/TeacherCourseExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/distribution/DistributionMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/teachercourse/TeacherCourseRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/distribution/DistributionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/teachercourse/TeacherCourseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/distribution/exceptions/DistributionAlreadyExistsException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/teachercourse/exceptions/TecaherCourseRelationAlreadyExistsException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/distribution/exceptions/DistributionNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/distribution/exceptions/MaximumNumberOfCoursesReachedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/teachercourse/exceptions/MaximumNumberOfCoursesReachedException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/distribution/exceptions/MaximumNumberOfTeachersReachedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/teachercourse/exceptions/MaximumNumberOfTeachersReachedException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/distribution/request/AddDistributionRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/teachercourse/request/AddTeacherCourseRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/distribution/response/DistributionResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/teachercourse/response/AddTeacherCourseResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/distribution/response/DistributionResponseList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/teachercourse/response/TeacherCourseResponses.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/enrollment/Enrollment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/enrollmentmetric/EnrollmentMetric.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/enrollment/EnrollmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/enrollment/EnrollmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/enrollment/EnrollmentExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/enrollment/EnrollmentExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/enrollment/EnrollmentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/enrollment/EnrollmentRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/enrollment/EnrollmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/enrollment/EnrollmentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/enrollment/exceptions/CourseCapacityExceededException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/enrollment/exceptions/CourseCapacityExceededException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/enrollment/exceptions/EnrollmentAlreadyExistsException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/enrollment/exceptions/EnrollmentAlreadyExistsException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/enrollment/exceptions/EnrollmentNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/enrollment/exceptions/EnrollmentNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/enrollment/exceptions/MaximumEnrollmentReachedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/enrollment/exceptions/MaximumEnrollmentReachedException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/enrollment/request/AddEnrollmentRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/enrollment/request/AddEnrollmentRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/enrollment/response/EnrollmentResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/enrollment/response/AddEnrollmentResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/enrollment/response/EnrollmentResponseList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/course/enrollment/response/EnrollmentResponses.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/shared/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/shared/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/shared/Validation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/shared/exceptions/ApiException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/shared/ApiException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/shared/exceptions/InvalidDOBException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/shared/exceptions/InvalidEmailFormatException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/shared/exceptions/InvalidNameException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/student/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/student/StudentEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/student/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/student/StudentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/student/StudentExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/student/StudentExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/student/StudentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/student/StudentRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/student/StudentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/student/StudentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/student/exceptions/EmailAlreadyTakenException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/student/exceptions/StudentEmailAlreadyTakenException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/student/exceptions/InvalidDOBException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/shared/exceptions/InvalidDOBException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/student/exceptions/InvalidEmailFormatException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/shared/exceptions/InvalidEmailFormatException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/student/exceptions/InvalidNameException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/shared/exceptions/InvalidNameException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/student/exceptions/StudentEmailAlreadyTakenException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/student/exceptions/StudentEmailAlreadyTakenException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/student/exceptions/StudentNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/student/exceptions/StudentNotFoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/student/request/StudentRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/student/request/StudentRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/student/response/StudentResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/student/response/StudentResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/student/request/StudentRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/student/request/AddStudentRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/student/response/StudentResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/student/response/AddStudentResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/student/response/StudentResponseList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/student/response/StudentResponses.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/teacher/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/teacher/TeacherEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/teacher/TeacherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/teacher/TeacherController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/teacher/TeacherExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/teacher/TeacherExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/teacher/TeacherMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/teacher/TeacherRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/teacher/TeacherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/teacher/TeacherService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/teacher/exceptions/TeacherEmailAlreadyTakenException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/teacher/exceptions/TeacherEmailAlreadyTakenException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/teacher/exceptions/TeacherNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/teacher/exceptions/TeacherNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/teacher/request/TeacherRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/teacher/request/AddTeacherRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/teacher/response/TeacherResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/teacher/response/AddTeacherResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/teacher/response/TeacherResponseList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/teacher/response/TeacherResponses.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/log4j2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/log4j2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/CourseMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/CourseMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/DistributionMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/TeacherCourseMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/EnrollmentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/EnrollmentMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/StudentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/StudentMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/sharedPackage/GlobalExceptionHandlerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/student/StudentControllerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/student/StudentExceptionHandlerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/student/StudentServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/TeacherMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/TeacherMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,9 +159,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit5 Test Class" />
         <option value="Interface" />
+        <option value="AnnotationType" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -156,6 +200,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DELOMBOK_PRE_COMMIT&quot;: &quot;false&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
@@ -175,26 +220,15 @@
       <recent name="C:\Users\Dell\OneDrive\Desktop\demo\src\test\resources" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="com.example.demo.sharedPackage" />
-      <recent name="com.example.demo.student" />
-      <recent name="com.example.demo" />
+      <recent name="com.example.demo.course.annotations.coursenamevalidator" />
+      <recent name="com.example.demo.course.annotations.coursecodevalidator" />
+      <recent name="com.example.demo.course.enrollment" />
+      <recent name="com.example.demo.course" />
+      <recent name="com.example.demo.teacher" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.DemoApplication">
-    <configuration name="DemoApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.demo.DemoApplication" />
-      <module name="demo.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.demo.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="StudentExceptionHandlerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.CourseServiceTest.testAddNewCourse">
+    <configuration name="CourseCodeValidatorTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -207,7 +241,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.example.demo.student.StudentExceptionHandlerTest&quot;" />
+            <option value="&quot;com.example.demo.course.annotations.coursecodevalidator.CourseCodeValidatorTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -218,7 +252,7 @@
       <ForceTestExec>true</ForceTestExec>
       <method v="2" />
     </configuration>
-    <configuration name="StudentExceptionHandlerTest.handleInvalidEmailFormatException" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="CourseNameValidatorTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -231,7 +265,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.example.demo.student.StudentExceptionHandlerTest.handleInvalidEmailFormatException&quot;" />
+            <option value="&quot;com.example.demo.course.annotations.coursenamevalidator.CourseNameValidatorTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -242,7 +276,7 @@
       <ForceTestExec>true</ForceTestExec>
       <method v="2" />
     </configuration>
-    <configuration name="StudentServiceTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="CourseServiceTest.testAddNewCourse" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -255,7 +289,31 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.example.demo.student.StudentServiceTest&quot;" />
+            <option value="&quot;com.example.demo.course.CourseServiceTest.testAddNewCourse&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>true</ForceTestExec>
+      <method v="2" />
+    </configuration>
+    <configuration name="EnrollmentServiceTest.testAddNewEnrollment" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.example.demo.course.enrollment.EnrollmentServiceTest.testAddNewEnrollment&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -298,11 +356,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.DemoApplication" />
+        <item itemvalue="Gradle.CourseServiceTest.testAddNewCourse" />
+        <item itemvalue="Gradle.CourseNameValidatorTest" />
+        <item itemvalue="Gradle.CourseCodeValidatorTest" />
         <item itemvalue="Gradle.Tests in 'com.example.demo'" />
-        <item itemvalue="Gradle.StudentExceptionHandlerTest" />
-        <item itemvalue="Gradle.StudentExceptionHandlerTest.handleInvalidEmailFormatException" />
-        <item itemvalue="Gradle.StudentServiceTest" />
+        <item itemvalue="Gradle.EnrollmentServiceTest.testAddNewEnrollment" />
       </list>
     </recent_temporary>
   </component>
@@ -315,6 +373,14 @@
       <option name="presentableId" value="Default" />
       <updated>1689248717968</updated>
     </task>
+    <task id="LOCAL-00001" summary="Refactor: Adding new entities">
+      <created>1693204816767</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1693204816767</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -344,20 +410,27 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Adding new entities" />
+    <MESSAGE value="Refactor: Adding new entities" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor: Adding new entities" />
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/demo$StudentMapperTest.ic" NAME="StudentMapperTest Coverage Results" MODIFIED="1690452657050" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/demo$DemoApplicationTest.ic" NAME="DemoApplicationTest Coverage Results" MODIFIED="1690476000314" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/demo$Tests_in__com_example_demo_student_.ic" NAME="Tests in 'com.example.demo.student' Coverage Results" MODIFIED="1690792455686" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/demo$StudentExceptionHandlerTest.ic" NAME="StudentExceptionHandlerTest Coverage Results" MODIFIED="1691051835383" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/demo$Tests_in__com_example_demo_.ic" NAME="Tests in 'com.example.demo' Coverage Results" MODIFIED="1691396962070" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/demo$NameValidatorTest.ic" NAME="NameValidatorTest Coverage Results" MODIFIED="1693466524064" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/demo$Tests_in__com_example_demo_.ic" NAME="Tests in 'com.example.demo' Coverage Results" MODIFIED="1693474292285" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/demo$StudentServiceTest_testValidateEmail_ValidFormat.ic" NAME="StudentServiceTest.testValidateEmail_ValidFormat Coverage Results" MODIFIED="1690451601386" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/demo$DemoApplication.ic" NAME="DemoApplication Coverage Results" MODIFIED="1690529886594" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/demo$DemoApplication.ic" NAME="DemoApplication Coverage Results" MODIFIED="1693290097805" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.example.demo.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/demo$StudentServiceTest_testAddNewStudent_Success.ic" NAME="StudentServiceTest.testAddNewStudent_Success Coverage Results" MODIFIED="1690473517828" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/demo$StudentMapperTest.ic" NAME="StudentMapperTest Coverage Results" MODIFIED="1690452657050" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/demo$Tests_in__com_example_demo_student_.ic" NAME="Tests in 'com.example.demo.student' Coverage Results" MODIFIED="1693463687568" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/demo$StudentExceptionHandlerTest.ic" NAME="StudentExceptionHandlerTest Coverage Results" MODIFIED="1691051835383" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/demo$StudentControllerTest.ic" NAME="StudentControllerTest Coverage Results" MODIFIED="1691048760849" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/demo$StudentServiceTest_testMapToResponse.ic" NAME="StudentServiceTest.testMapToResponse Coverage Results" MODIFIED="1690453418870" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/demo$DemoApplicationTests.ic" NAME="DemoApplicationTests Coverage Results" MODIFIED="1690471100585" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/demo$StudentServiceTest.ic" NAME="StudentServiceTest Coverage Results" MODIFIED="1691051264418" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/demo$StudentServiceTest_testAddNewStudent_Success.ic" NAME="StudentServiceTest.testAddNewStudent_Success Coverage Results" MODIFIED="1690473517828" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/demo$StudentServiceTest.ic" NAME="StudentServiceTest Coverage Results" MODIFIED="1693463004458" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/demo$Tests_in__com_example_demo_shared_.ic" NAME="Tests in 'com.example.demo.shared' Coverage Results" MODIFIED="1693464173744" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

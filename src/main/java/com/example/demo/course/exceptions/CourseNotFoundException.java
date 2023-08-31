@@ -12,6 +12,3 @@ public class CourseNotFoundException extends RuntimeException {
     super(message);
   }
 }
-
-
-

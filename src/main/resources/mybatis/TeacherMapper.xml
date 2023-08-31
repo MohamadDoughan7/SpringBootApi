@@ -1,14 +1,14 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.teacher.TeacherMapper">
+<mapper namespace="com.example.demo.teacher.TeacherRepository">
 
-  <resultMap id="teacherResultMap" type="com.example.demo.teacher.Teacher">
-    <id property="id" column="id" />
-    <result property="name" column="name" />
-    <result property="dob" column="dob" />
-    <result property="email" column="email" />
-    <result property="subject" column="subject" />
+  <resultMap id="teacherResultMap" type="com.example.demo.teacher.TeacherEntity">
+    <id property="id" column="id"/>
+    <result property="name" column="name"/>
+    <result property="dob" column="dob"/>
+    <result property="email" column="email"/>
+    <result property="subject" column="subject"/>
   </resultMap>
 
   <select id="getAllTeachers" resultMap="teacherResultMap">
@@ -28,7 +28,8 @@
     WHERE email = #{email}
   </select>
 
-  <insert id="insertTeacher" parameterType="com.example.demo.teacher.Teacher" useGeneratedKeys="true" keyProperty="id">
+  <insert id="insertTeacher" parameterType="com.example.demo.teacher.TeacherEntity"
+    useGeneratedKeys="true" keyProperty="id">
     INSERT INTO teachers
     (
     name,
@@ -45,12 +46,13 @@
     )
   </insert>
 
-  <update id="updateTeacher" parameterType="com.example.demo.teacher.Teacher">
+  <update id="updateTeacher" parameterType="com.example.demo.teacher.TeacherEntity">
     UPDATE teachers
     SET
     name = #{name},
     dob = #{dob},
-    email = #{email}
+    email = #{email},
+    subject= #{subject}
     WHERE id = #{id}
   </update>
 

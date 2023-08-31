@@ -1,16 +1,15 @@
 package com.example.demo.teacher;
 
-import static com.example.demo.shared.Validation.validateEmail;
-import static com.example.demo.shared.Validation.validateName;
-
 import com.example.demo.teacher.exceptions.TeacherEmailAlreadyTakenException;
 import com.example.demo.teacher.exceptions.TeacherNotFoundException;
-import com.example.demo.teacher.response.TeacherResponse;
-import com.example.demo.teacher.response.TeacherResponseList;
+import com.example.demo.teacher.response.AddTeacherResponse;
+import com.example.demo.teacher.response.GetTeacherResponse;
+import com.example.demo.teacher.response.TeacherResponses;
 import java.time.LocalDate;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 /**
@@ -21,36 +20,29 @@ import org.springframework.stereotype.Service;
 @Log4j2
 public class TeacherService {
 
-
-  private final TeacherMapper teacherMapper;
+  private final ModelMapper modelMapper = new ModelMapper();
+  private final TeacherRepository teacherRepository;
 
   /**
    * Retrieves the list of available teachers.
    *
    * @return list of available teachers.
    */
-  public TeacherResponseList getTeachers() {
+  public TeacherResponses getTeachers() {
     /*
     Log info about displaying the list of teachers.
      */
     log.info("List of existing teachers has been displayed.");
-
     /*
-    Get the list of teachers from the service using the TeacherMapper interface,
+    Get the list of teachers from the service using the TeacherRepository interface,
     and then build the response.
      */
-    return new TeacherResponseList(
-        teacherMapper.getAllTeachers().stream()
-            .map(teacher -> new TeacherResponse(
-                teacher.getId(),
-                teacher.getName(),
-                teacher.getDob(),
-                teacher.getEmail(),
-                teacher.getSubject()))
+    return new TeacherResponses(
+        teacherRepository.getAllTeachers().parallelStream()
+            .map(teacherEntity -> modelMapper.map(teacherEntity, GetTeacherResponse.class))
             .collect(Collectors.toList())
     );
   }
-
 
   /**
    * Adds a new teacher and saves it in the database.
@@ -61,35 +53,35 @@ public class TeacherService {
    * @return the added teacher
    * @throws TeacherEmailAlreadyTakenException if the email is already taken
    */
-
-  public TeacherResponse addTeacher(String name, LocalDate dob, String email, String subject) {
-
+  public AddTeacherResponse addTeacher(String name, LocalDate dob, String email, String subject) {
     /*
      Check if the email already exists in the database.
      */
-    if (teacherMapper.findTeacherByEmail(email) != null) {
+    if (teacherRepository.findTeacherByEmail(email) != null) {
       String errorMessage = "Email already exists: " + email;
       throw new TeacherEmailAlreadyTakenException(errorMessage);
     }
-
     /*
-     Create a new Teacher object and insert it into the database using the TeacherMapper interface.
+     Create a new TeacherEntity object
      */
-    Teacher teacher = new Teacher(name, dob, email, subject);
-    teacherMapper.insertTeacher(teacher);
-
+    TeacherEntity teacherEntity = new TeacherEntity();
+    teacherEntity.setName(name);
+    teacherEntity.setEmail(email);
+    teacherEntity.setDob(dob);
+    teacherEntity.setSubject(subject);
     /*
-     Log info about the new teacher added.
+    Insert a new teacherEntity in database.
      */
-    log.info("New teacher added: {}", teacher);
-
+    teacherRepository.insertTeacher(teacherEntity);
     /*
-     Map the newly inserted teacher to a TeacherResponse object and return it.
+     Log info about the new teacherEntity added.
      */
-    return new TeacherResponse(teacher.getId(), teacher.getName(), teacher.getDob(),
-        teacher.getEmail(), teacher.getSubject());
+    log.info("New teacherEntity added: {}", teacherEntity);
+    /*
+     Map the newly inserted teacherEntity to a AddTeacherResponse object and return it.
+     */
+    return modelMapper.map(teacherEntity, AddTeacherResponse.class);
   }
-
 
   /**
    * Deletes a teacher from the database.
@@ -101,15 +93,15 @@ public class TeacherService {
     /*
      Check if the teacher exists in the database based on the provided id.
      */
-    if (!teacherMapper.existsById(teacherId)) {
-      String errorMessage = "Teacher with id " + teacherId + " does not exist.";
+    if (!teacherRepository.existsById(teacherId)) {
+      String errorMessage = "TeacherEntity with id " + teacherId + " does not exist.";
       throw new TeacherNotFoundException(errorMessage);
     }
     /*
-     Delete the student from the database using the StudentMap interface.
+     Delete the teacher from the database using the TeacherRepository interface.
      */
-    teacherMapper.deleteTeacherById(teacherId);
-    log.info("Teacher with id " + teacherId + " has been deleted.");
+    teacherRepository.deleteTeacherById(teacherId);
+    log.info("TeacherEntity with id " + teacherId + " has been deleted.");
   }
 
   /**
@@ -121,31 +113,30 @@ public class TeacherService {
    * @throws TeacherNotFoundException          if the teacher with the given ID does not exist
    * @throws TeacherEmailAlreadyTakenException if the email is already taken
    */
-  public void updateTeacherById(Long teacherId, String name, String email) {
-    validateName(name);
-    validateEmail(email);
-
+  public void updateTeacherById(Long teacherId,
+      String name,
+      String email,
+      LocalDate dob,
+      String subject) {
     /*
-     Find the existing teacher by ID using the TeacherMapper interface.
+     Find the existing teacherEntity by ID using the TeacherRepository interface.
      */
-    Teacher teacher = teacherMapper.findById(teacherId);
-    if (teacher == null) {
-      String errorMessage = "Teacher with id " + teacherId + " does not exist.";
+    TeacherEntity teacherEntity = teacherRepository.findById(teacherId);
+    if (teacherEntity == null) {
+      String errorMessage = "TeacherEntity with id " + teacherId + " does not exist.";
       throw new TeacherNotFoundException(errorMessage);
     }
-
     /*
-     Update the name and email of the teacher.
+     Update the name and email of the teacherEntity.
      */
-    teacher.setName(name);
-    teacher.setEmail(email);
-
-
+    teacherEntity.setName(name);
+    teacherEntity.setEmail(email);
+    teacherEntity.setDob(dob);
+    teacherEntity.setSubject(subject);
     /*
-     Update the teacher in the database using the TeacherMapper interface.
+     Update the teacherEntity in the database using the TeacherRepository interface.
      */
-    teacherMapper.updateTeacher(teacher);
-    log.info("Teacher with id " + teacherId + " has been updated.");
+    teacherRepository.updateTeacher(teacherEntity);
+    log.info("TeacherEntity with id " + teacherId + " has been updated.");
   }
-
 }

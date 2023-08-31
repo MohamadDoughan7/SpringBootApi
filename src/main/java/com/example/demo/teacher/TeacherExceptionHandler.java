@@ -1,6 +1,6 @@
 package com.example.demo.teacher;
 
-import com.example.demo.shared.exceptions.ApiException;
+import com.example.demo.shared.ApiException;
 import com.example.demo.teacher.exceptions.TeacherEmailAlreadyTakenException;
 import com.example.demo.teacher.exceptions.TeacherNotFoundException;
 import java.time.ZoneId;
@@ -26,7 +26,7 @@ public class TeacherExceptionHandler {
    */
   @ExceptionHandler(TeacherNotFoundException.class)
   public ResponseEntity<Object> handleTeacherNotFoundException(TeacherNotFoundException ex) {
-    String errorMessage= ex.getMessage();
+    String errorMessage = ex.getMessage();
     ApiException apiException = new ApiException(
         errorMessage,
         "Non Existing resource",
@@ -51,6 +51,4 @@ public class TeacherExceptionHandler {
     log.error(errorMessage);
     return new ResponseEntity<>(apiException, HttpStatus.UNPROCESSABLE_ENTITY);
   }
-
-
 }

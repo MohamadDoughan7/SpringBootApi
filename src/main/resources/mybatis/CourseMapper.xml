@@ -1,13 +1,14 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.course.CourseMapper">
+<mapper namespace="com.example.demo.course.CourseRepository">
 
-  <resultMap id="courseResultMap" type="com.example.demo.course.Course">
-    <id property="courseId" column="course_id" />
-    <result property="courseName" column="course_name" />
-    <result property="field" column="field" />
-    <result property="capacity" column="capacity" />
+  <resultMap id="courseResultMap" type="com.example.demo.course.CourseEntity">
+    <id property="id" column="course_id"/>
+    <result property="name" column="course_name"/>
+    <result property="code" column="code"/>
+    <result property="field" column="field"/>
+    <result property="capacity" column="capacity"/>
   </resultMap>
 
   <select id="getAllCourses" resultMap="courseResultMap">
@@ -18,49 +19,53 @@
   <select id="findById" resultMap="courseResultMap" parameterType="java.lang.Long">
     SELECT *
     FROM courses
-    WHERE course_id = #{courseId}
+    WHERE course_id = #{id}
   </select>
 
   <select id="findCourseByName" resultMap="courseResultMap" parameterType="java.lang.String">
     SELECT *
     FROM courses
-    WHERE course_name = #{courseName}
+    WHERE course_name = #{name}
   </select>
 
-  <insert id="insertCourse" parameterType="com.example.demo.course.Course" useGeneratedKeys="true" keyProperty="courseId">
+  <insert id="insertCourse" parameterType="com.example.demo.course.CourseEntity"
+    useGeneratedKeys="true" keyProperty="id">
     INSERT INTO courses
     (
     course_name,
+    code,
     field,
     capacity
     )
     VALUES
     (
-    #{courseName},
+    #{name},
+    #{code},
     #{field},
     #{capacity}
     )
   </insert>
 
-  <update id="updateCourse" parameterType="com.example.demo.course.Course">
+  <update id="updateCourse" parameterType="com.example.demo.course.CourseEntity">
     UPDATE courses
     SET
-    course_name = #{courseName},
+    course_name = #{name},
+    code = #{code},
     field = #{field},
     capacity = #{capacity}
-    WHERE course_id = #{courseId}
+    WHERE course_id = #{id}
   </update>
 
   <delete id="deleteCourseById" parameterType="java.lang.Long">
     DELETE
     FROM courses
-    WHERE course_id = #{courseId}
+    WHERE course_id = #{id}
   </delete>
 
   <select id="existsById" resultType="boolean" parameterType="java.lang.Long">
     SELECT EXISTS
     (SELECT 1 FROM courses
-    WHERE course_id = #{courseId})
+    WHERE course_id = #{id})
   </select>
 
 </mapper>
